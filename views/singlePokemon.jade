@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= data["name"]
+
+
+  p Type  
+  h3= data["type"]
+  p Trainer ID
+    h3= data["trainer_id"]
+
+    form(method="get" action="/pokemon/#{pokeID}/edit")
+      input(type="submit" value="Edit Pokemon")

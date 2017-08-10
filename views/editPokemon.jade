@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  p Update a Pokemon (please enter all fields)
+  form(method="post" action="/pokemon/new")
+    input(type="text", name="name", placeholder="Pokemon Name...")
+    input(type="text", name="type", placeholder="Type of Pokemon...")
+    input(type="number", name="trainerID", placeholder="Trainer ID...")
+    input(type="submit" method="post" value="Update")

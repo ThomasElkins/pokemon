@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  - for (var i = 0; i < data.length; i++){
+    button
+      a(href='/pokemon/#{i}') #{data[i]["name"]}
+  -}
+  form(method="get", action="/pokemon/new")
+    input(type="submit" value="Create")

@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  p Add new Pokemon 
+  form(method="patch" action="/pokemon/new")
+    input(type="text", name="name", placeholder="Pokemon Name...")
+    input(type="text", name="type", placeholder="Type of Pokemon...")
+    input(type="number", name="trainerID", placeholder="Trainer ID...")
+    input(type="submit" method="patch" value="Create")

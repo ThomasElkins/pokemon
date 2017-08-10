@@ -1,0 +1,6 @@
+extends layout
+
+block content
+  form(method="post" action="/trainers/new")
+    input(type="text", name="name", placeholder="Trainer Name...")
+    input(type="submit" method="post" value="Create")
