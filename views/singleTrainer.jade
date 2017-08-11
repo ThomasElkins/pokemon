@@ -8,9 +8,10 @@ block content
   h3= data[0]["id"]
   p Pokemon
   - for (var i = 0; i < data.length; i++){
-    h3= data[i]["pokemon_name"]
+    button
+      a(href="/pokemon/#{data[i]['pokeNum']}") #{data[i]["pokemon_name"]}
   -}
-  //- h3= data["pokemon_name"]
+  //- h3= data[i]["pokemon_name"]
   
   form(method="get" action="/trainers/#{trainerID}/edit")
     input(type="submit" value="Edit Trainer")

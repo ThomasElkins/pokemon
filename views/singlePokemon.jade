@@ -7,9 +7,10 @@ block content
   p Type  
   h3= data["type"]
   p Trainer
-    h3= data["trainer_name"]
+  button
+    a(href="/trainers/#{data['trainer_id']}") #{data["trainer_name"]}
 
-    form(method="get" action="/pokemon/#{pokeID}/edit")
+  form(method="get" action="/pokemon/#{pokeID}/edit")
       input(type="submit" value="Edit Pokemon")
-    form(method="post" action="/pokemon/#{pokeID}/delete")
-      input(type="submit" value="Delete Pokemon")
+  form(method="post" action="/pokemon/#{pokeID}/delete")
+    input(type="submit" value="Delete Pokemon")

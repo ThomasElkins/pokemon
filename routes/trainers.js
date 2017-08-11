@@ -34,8 +34,7 @@ router.post('/new', function(req, res, next){
 // Individual trainers page
 router.get('/:id', function(req, res, next){
   var trainerID = req.params.id;
-  // knex.raw(`select * from trainers where id = ${trainerID}`)
-  knex.raw(`select pokemon.name AS "pokemon_name", trainers.* from trainers join pokemon on pokemon.trainer_id = trainers.id where trainers.id = ${trainerID}`)
+  knex.raw(`select pokemon.name AS "pokemon_name", pokemon.id AS "pokeNum", trainers.* from trainers join pokemon on pokemon.trainer_id = trainers.id where trainers.id = ${trainerID}`)
   .then(function(data){
     res.render('singleTrainer', {title: "Trainer", data: data.rows, trainerID: trainerID})
   });
