@@ -33,10 +33,38 @@ router.post('/new', function(req, res, next){
 
 // Individual trainers page
 router.get('/:id', function(req, res, next){
-  var trainerID = parseInt(req.params.id) + 1;
-  knex.raw(`select * from trainers where id = ${trainerID}`)
+  var trainerID = req.params.id;
+  // knex.raw(`select * from trainers where id = ${trainerID}`)
+  knex.raw(`select pokemon.name AS "pokemon_name", trainers.* from trainers join pokemon on pokemon.trainer_id = trainers.id where trainers.id = ${trainerID}`)
   .then(function(data){
-    res.render('singleTrainer', {title: "Trainer", data: data.rows[0], trainerID: trainerID})
+    res.render('singleTrainer', {title: "Trainer", data: data.rows, trainerID: trainerID})
   });
 });
 module.exports = router;
+
+//Edit Trainers Page
+
+router.get('/:id/edit', function(req, res, next){
+  var trainerID = req.params.id;
+  res.render('editTrainer', {title: "Edit a Trainer", trainerID: trainerID})
+});
+
+//Update Trainer
+
+router.post('/:id/edit', function(req, res, next){
+  var trainerID = req.params.id;
+  knex.raw(`update trainers set name = '${req.body.name}' where id = ${trainerID}`)
+    .then(function(data){
+      res.redirect('/trainers')
+    });
+});
+
+
+//Delete a trainerID
+router.post('/:id/delete', function(req, res, next){
+  var trainerID = req.params.id;
+  knex.raw(`delete from trainers where id = ${trainerID}`)
+    .then(function(data){
+      res.redirect('/trainers')
+    });
+});

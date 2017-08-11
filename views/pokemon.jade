@@ -3,9 +3,8 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  - for (var i = 0; i < data.length; i++){
+  - for pokemon in data
     button
-      a(href='/pokemon/#{i}') #{data[i]["name"]}
-  -}
+      a(href='/pokemon/#{pokemon.id}') #{pokemon["name"]}
   form(method="get", action="/pokemon/new")
     input(type="submit" value="Create")

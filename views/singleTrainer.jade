@@ -1,9 +1,18 @@
 extends layout
 
 block content
-  h1= data["name"]
+  h1= data[0]["name"]
 
 
   p ID  
-  h3= data["id"]
+  h3= data[0]["id"]
+  p Pokemon
+  - for (var i = 0; i < data.length; i++){
+    h3= data[i]["pokemon_name"]
+  -}
+  //- h3= data["pokemon_name"]
   
+  form(method="get" action="/trainers/#{trainerID}/edit")
+    input(type="submit" value="Edit Trainer")
+  form(method="post" action="/trainers/#{trainerID}/delete")
+    input(type="submit" value="Delete Trainer")

@@ -3,9 +3,8 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  - for (var i = 0; i < data.length; i++){
+  - for trainers in data
     button
-      a(href='/trainers/#{i}') #{data[i]["name"]}
-  -}
+      a(href='/trainers/#{trainers.id}') #{trainers["name"]}
   form(method="get", action="/trainers/new")
     input(type="submit" value="Create")

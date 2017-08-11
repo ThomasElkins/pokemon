@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  p Update a Trainer (please enter all fields)
+  form(method="post" action="/trainers/#{trainerID}/edit")
+    input(type="text", name="name", placeholder="Trainer Name...")
+    input(type="submit" method="post" value="Update")
